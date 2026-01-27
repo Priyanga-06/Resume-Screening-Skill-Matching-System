@@ -72,3 +72,31 @@ HR Team
         server.quit()
     except Exception as e:
         raise e
+# ------------------ Course Suggestions ------------------
+
+role_course_suggestions = {
+    "Web Developer": {
+        "html": ["Improve HTML semantics"],
+        "css": ["Learn Flexbox & Grid"],
+        "javascript": ["Learn ES6 concepts"],
+        "react": ["Build React projects"],
+        "backend": ["Learn Node.js", "Learn Express", "Learn MongoDB"]
+    },
+    "Data Analyst": {
+        "sql": ["Practice joins & subqueries"],
+        "excel": ["Learn dashboards"],
+        "python": ["Practice pandas projects"]
+    }
+}
+
+def get_course_suggestions(role, missing_skills):
+    suggestions = []
+    role_dict = role_course_suggestions.get(role, {})
+
+    for skill in missing_skills:
+        if skill in role_dict:
+            suggestions.extend(role_dict[skill])
+
+    return list(set(suggestions))
+
+
